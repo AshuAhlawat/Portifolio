@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Space+Mono&display=swap');
+
+:root {
+  --g: #50fa7b;
+  --w: #f8f8f2;
+  --p: rgb(189, 147, 249);
+  --b: rgb(139, 233, 253);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  background-color: #282a36;
+}
+
+.navbar > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #44475a;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #f8f8f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  transition: 200ms;
+}
+
+li a:hover:not(.active) {
+  background-color: #6272a4;
+  transform: translateY(-7px);
+  border-radius: 0 0 5px 5px;
+  transition: 200ms;
+}
+
+.active {
+  font-weight: 400;
+  font-size: large;
+}
+
+#other {
+  color: var(--g);
+}
+#other:hover{
+  color: #282a36;
+  background-color: var(--g);
+}
+#github {
+  color: var(--p);
+}
+#github:hover{
+  color: #282a36;
+  background-color: var(--p);
+}
+#linkdin {
+  color: var(--b);
+}
+#linkdin:hover{
+  color: #282a36;
+  background-color: var(--b);
+}
+
+.content {
+  font-family: 'Space Mono'
+}

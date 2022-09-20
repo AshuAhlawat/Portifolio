@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Introduction {% endblock %}
+
+{% block style %}
+    <style>
+        .name{
+            color: #f8f8f2;
+            font-size: x-large;
+            font-weight: 500;
+
+            /* float: right; */
+            margin-top: 30px;
+            margin-right: 50px;
+
+            /* border: 2px solid black; */
+        }
+        .name > span{
+            font-size:medium;
+            color : #6272a4;
+        }
+        
+        .left{
+            float:left;
+            width: 40%;
+            margin-left: 5%;
+            margin-top: 5%;
+        }
+
+        img{
+            /* height: 100%; */
+            width: 80%;
+            margin-left: 10%;
+            border-radius: 50% 50% 30% 30%;
+            transition: 2s;
+        }
+        img:hover{
+            /* height: 100%; */
+            margin-left: 5%;
+            width: 90%;
+            border-radius: 50% 50% 30% 30%;
+
+            transition: 2s;
+            /* transform: scale(1.1,1.1); */
+        }
+        .right {
+            width: 50%;
+            padding-top: 30px;
+            padding-right: 30px;
+            float : right;
+        }
+        .contacts{
+            margin-top: 50px;
+            color : rgb(255, 184, 108);
+        }
+
+        .address{
+            margin-top: 50px;
+            color : rgb(255, 184, 108);
+        }
+
+        .about{
+            margin-top: 50px;
+            color : #f1fa8c;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="left">
+    <img src="/media/{{details.dp}}" alt="">
+    <div class="name">
+        {{details.name}} <span>{{details.position}}</span>
+    </div>
+
+    <div class="contacts">
+        <span>{{details.phone}}</span><br>
+        <span>{{details.email}}</span>
+    </div>
+</div>
+
+
+<div class="right">
+
+    <div class="about">
+        {{details.about|linebreaks}}
+    </div>
+
+    <div class="address">
+        <span>{{details.address|linebreaks}}</span><br>
+        <span>{{details.zipcode}}</span>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

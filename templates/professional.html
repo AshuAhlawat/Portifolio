@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %} Professional {% endblock %}
+
+{% block style %}
+<style>
+    .edu{
+        color:white;
+        margin: 30px;
+    }
+    .edu-item,.exp-item{
+        padding: 10px;
+        margin: 10px;
+        border:3px solid white;
+        border-radius: 5px;
+    }
+    .time {
+        float:right;
+    }
+
+    .exp{
+        color:white;
+        margin: 30px;
+    }
+
+    .skills{
+        color :white;
+        margin: 30px; 
+    }
+    .skills>div{
+        padding: 20px;
+        margin: 10px;
+        border:3px solid white;
+        border-radius: 5px; 
+        float:left;
+        width: 18%;
+        min-width: 200px;
+        height: 120px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="edu">
+        <h1>Education</h1>
+        {% for education in educations %}
+            <div class="edu-item">
+                <p class="degree">{{education.degree}} <span class="score">{{education.score}}</span></p>
+                <p class="time">{{education.start}} - {{education.end}}</p>
+                <p class="institute">{{education.institute}}</p>
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="exp">
+        <h1>Experience</h1>
+        {% for experience in experiences %}
+            <div class="exp-item">
+                <p class="time">{{experience.start}} - {{experience.end}}</p>
+                <p class="job">{{experience.job_title}}</p>
+                
+                <p class="employer">{{experience.employer}} <span class="employeed">{{experience.employeed}}</span></p>
+                <p class="location">{{experience.location}}</p>
+
+                <p class="desc">{{experience.desc|linebreaks}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="skills">
+        <h1>Skills</h1>
+        <div class="lang">
+            <h3>Languages</h3>
+            <ul>
+            {% for skill in skills %}
+                {% if skill.type_of == "Language" %}
+                    <li>{{skill.name}}</li> <br>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div> 
+
+        <div class="frame">
+            <h3>Framework</h3>
+            <ul>
+            {% for skill in skills %}
+                {% if skill.type_of == "Framework" %}
+                    <li>{{skill.name}}</li><br>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="tool">
+            <h3>Tools</h3>
+            <ul>
+            {% for skill in skills %}
+                {% if skill.type_of == "Tools" %}
+                    <li>{{skill.name}}</li><br>
+                {% endif %}    
+            {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="db">
+            <h3>Data Base</h3>
+            <ul>
+            {% for skill in skills %}
+                {% if skill.type_of == "DataBase" %}
+                    <li>{{skill.name}}</li><br>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div class="soft">
+            <h3>Soft Skills</h3>
+            <ul>
+            {% for skill in skills %}
+                {% if skill.type_of == "Soft Skills" %}
+                    <li>{{skill.name}}</li><br>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>  
+
+{% endblock %}
