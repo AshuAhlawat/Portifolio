@@ -4,40 +4,84 @@
 
 {% block style %}
 <style>
+    a{
+        text-decoration: none;
+    }
+    a:visited{
+        color: white;
+    }
     .edu{
-        color:white;
+        color:var(--white);
         margin: 30px;
     }
     .edu-item,.exp-item{
         padding: 10px;
         margin: 10px;
-        border:3px solid white;
+        border:5px solid var(--gray);
         border-radius: 5px;
+    }
+    .degree{
+        color: var(--orange);
+        font-size: larger;
+    }
+    .degree>span{
+        color: var(--yellow);
+        font-size: medium;
     }
     .time {
         float:right;
+        font-size:medium;
+        color: var(--comment);
     }
 
     .exp{
-        color:white;
+        color:var(--white);
         margin: 30px;
+    }
+    .job{
+        color : var(--orange);
+        font-size: larger;
+    }
+    .employer{
+        font-size: large;
+    }
+    .desc{
+        margin-top: 10px;
+        color: var(--yellow);
+        font-size: medium;
     }
 
     .skills{
-        color :white;
+        color :var(--white);
         margin: 30px; 
     }
     .skills>div{
         padding: 20px;
-        margin: 10px;
-        border:3px solid white;
+        margin: 1%;
+        /* border:5px solid var(--gray); */
         border-radius: 5px; 
         float:left;
         width: 18%;
-        min-width: 200px;
+        min-width: 160px;
         height: 120px;
         overflow-y: scroll;
         scroll-behavior: smooth;
+        transition: 500ms;
+    }
+
+    .skills>div>h3{
+        color: var(--purple);
+    }
+
+    .skills>div:hover{
+        transform: scale(1.2);
+        /* margin: 0.5%; */
+    }
+    li{
+        transition: 200ms;
+    }
+    li:hover{
+        color:var(--purple);
     }
 </style>
 {% endblock %}
@@ -49,9 +93,8 @@
         {% for education in educations %}
             <div class="edu-item">
                 <p class="degree">{{education.degree}} <span class="score">{{education.score}}</span></p>
-                <p class="time">{{education.start}} - {{education.end}}</p>
+                <p class="time">{{education.start|date:"M Y"}} - {{education.end|date:"M Y"}}</p>
                 <p class="institute">{{education.institute}}</p>
-
             </div>
         {% endfor %}
     </div>
@@ -59,17 +102,25 @@
     <div class="exp">
         <h1>Experience</h1>
         {% for experience in experiences %}
+        <a href="/media/{{experience.proof}}" target="_blank">
             <div class="exp-item">
-                <p class="time">{{experience.start}} - {{experience.end}}</p>
+                <p class="time">{{experience.start|date:"M Y"}} - 
+                    {% if experience.employed %}
+                    Present
+                    {% else %}
+                    {{experience.end|date:"M Y"}}
+                    {% endif %}
+                </p>
                 <p class="job">{{experience.job_title}}</p>
                 
-                <p class="employer">{{experience.employer}} <span class="employeed">{{experience.employeed}}</span></p>
-                <p class="location">{{experience.location}}</p>
+                <p class="employer">{{experience.employer}} <span class="location"> - {{experience.location}}</span></p>
+                
 
-                <p class="desc">{{experience.desc|linebreaks}}</p>
+                <div class="desc">{{experience.desc|linebreaks}}</div>
             </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </a>
 
     <div class="skills">
         <h1>Skills</h1>

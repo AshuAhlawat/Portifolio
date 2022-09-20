@@ -2,10 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Space+Mono&display=swap');
 
 :root {
-  --g: #50fa7b;
-  --w: #f8f8f2;
-  --p: rgb(189, 147, 249);
-  --b: rgb(139, 233, 253);
+  --black: #282a36;
+  --gray:#44475a;
+  --comment: #6272a4;
+  --white: #f8f8f2;
+  --blue: rgb(139, 233, 253);
+  --green: #50fa7b;
+  --purple: rgb(189, 147, 249);
+  --pink: #ff79c6;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+  --orange: #ffb86c;
 }
 
 *{
@@ -15,7 +22,7 @@
 }
 
 body{
-  background-color: #282a36;
+  background-color: var(--black);
 }
 
 .navbar > ul {
@@ -53,25 +60,25 @@ li a:hover:not(.active) {
 }
 
 #other {
-  color: var(--g);
+  color: var(--green);
 }
 #other:hover{
   color: #282a36;
-  background-color: var(--g);
+  background-color: var(--green);
 }
 #github {
-  color: var(--p);
+  color: var(--purple);
 }
 #github:hover{
   color: #282a36;
-  background-color: var(--p);
+  background-color: var(--purple);
 }
 #linkdin {
-  color: var(--b);
+  color: var(--blue);
 }
 #linkdin:hover{
   color: #282a36;
-  background-color: var(--b);
+  background-color: var(--blue);
 }
 
 .content {
