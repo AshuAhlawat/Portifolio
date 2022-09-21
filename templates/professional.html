@@ -98,12 +98,14 @@
                 <p class="time">{{education.start|date:"M Y"}} - {{education.end|date:"M Y"}}</p>
                 <p class="institute">{{education.institute}}</p>
             </div>
+            
         {% endfor %}
     </div>
 
     <div class="exp">
         <h1>Experience</h1>
         {% for experience in experiences %}
+        {% if experience.employer != "myself" %}
         <a href="/media/{{experience.proof}}" target="_blank">
             <div class="exp-item">
                 <p class="time">{{experience.start|date:"M Y"}} - 
@@ -120,6 +122,7 @@
 
                 <div class="desc">{{experience.desc|linebreaks}}</div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </a>
