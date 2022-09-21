@@ -40,10 +40,11 @@
     }
     .job{
         color : var(--orange);
-        font-size: larger;
+        font-size:x-large;
     }
     .employer{
         font-size: large;
+        color: var(--white);
     }
     .desc{
         margin-top: 10px;
@@ -70,7 +71,7 @@
     }
 
     .skills>div>h3{
-        color: var(--purple);
+        color: var(--green);
     }
 
     .skills>div:hover{
@@ -91,6 +92,7 @@
     <div class="edu">
         <h1>Education</h1>
         {% for education in educations %}
+            
             <div class="edu-item">
                 <p class="degree">{{education.degree}} <span class="score">{{education.score}}</span></p>
                 <p class="time">{{education.start|date:"M Y"}} - {{education.end|date:"M Y"}}</p>

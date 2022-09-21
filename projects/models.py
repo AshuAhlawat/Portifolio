@@ -13,6 +13,9 @@ class Project(models.Model):
 
     on_job = models.ForeignKey(Experience, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class Certificate(models.Model):
     cover = models.ImageField(default="images/certificate.png")
     org = models.CharField(max_length=30)

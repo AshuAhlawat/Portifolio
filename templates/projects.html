@@ -11,35 +11,85 @@
     .project-item{
         padding: 10px;
         margin: 10px;
-        border:3px solid white;
+        border:5px solid var(--gray);
         border-radius: 5px;
     }
     .time,.skills{
         float: right;
     }
+    .time{
+        color: var(--comment);
+    }
+    .skills{
+        width: 50%;
+    }
+    .skills>span{
+        float: right;
+        background-color: var(--blue);
+        color: var(--black);
+        margin-left: 5px;
+        padding: 3px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+
     a{
         text-decoration: none;
     }
     a:visited{
         color:white;
     }
+    .project-item>h2{
+        color: var(--purple);
+        margin-bottom: 10px;
+    }
+    .certi{
+        float: left;
+        width: 95%;
+    }
+    .certi-item>h2{
+        color: var(--pink);
+    }
     
     .certi-item{
         float:left;
-
-        padding: 10px;
         margin: 10px;
-        border:3px solid white;
-        border-radius: 5px;
-        width: 24%;
+
+        border-radius: 10px;
+        width: 20%;
+        min-width: 300px;
         height: 400px;
         overflow-y: scroll;
+        transition: 400ms;
+
+        background-color: var(--gray);
     }
+    .certi-item>h2{
+        text-align: center;
+    }
+    .certi-item>span{
+        color: var(--comment);
+        font-weight: bold;
+        float: right;
+        font-size: medium;
+    }
+    .certi-item>p,span{
+        margin: 5px;
+    }
+
+
     img{
         width: 100%;
     }
-    .achieve{
-        float:right;
+    .achieve>span::before{
+        content: "~$\00A0";
+        color: var(--green);
+    }
+
+
+
+    .employer{
+        color: var(--comment);
     }
 </style>
 {% endblock %}
@@ -49,7 +99,7 @@
     <div class="project">
         <h1>Projects</h1>
         {% for project in projects %}
-            <a href="{{project.link}}">
+            <a target="_blank" href="{{project.link}}">
             <div class="project-item">
                 
                 <p class="time">{{project.completed}}</p>
@@ -60,7 +110,8 @@
                     <span>{{skill}}</span>
                     {% endfor %}
                 </p>
-                <p>for {{project.on_job.employer}}</p>
+                <p class="employer">for {{project.on_job.employer}}</p>
+                <br>
             </div>
             </a>
         {% endfor %}
@@ -69,25 +120,26 @@
     <div class="certi">
         <h1>Certificates</h1>
         {% for certificate in certificates %}
-            <a href="{{certificate.link}}">
+            
             <div class="certi-item">
-                <img src="/media/{{certificate.cover}}" alt="">
-                <h2 class="name">{{certificate.name}}</h2><span>by {{certificate.org}}</span>
-
+                <a target="_blank" href="{{certificate.link}}"><img src="/media/{{certificate.cover}}" alt=""></a>
+                
+                <h2 class="name">{{certificate.name}}</h2>
+                <span>by {{certificate.org}}</span>
+                
                 <p class="desc">{{certificate.desc}}</p>
             </div>
-            </a>
+
+    
         {% endfor %}
     </div>
-    
+
     <div class="achieve">
-        <h1>Achievement</h1>
-        <ul>
-        {% for achievement in achievements %}
-            <li>{{achievement.data}}</li><br>
-        {% endfor %}    
-        </ul>
+        <h1>Achievements</h1>
         
+        {% for achievement in achievements %}
+            <span>{{achievement.data}}</span><br>
+        {% endfor %}    
     </div>
 
 {% endblock %}
