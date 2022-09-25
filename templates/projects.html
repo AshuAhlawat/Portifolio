@@ -4,26 +4,34 @@
 
 {% block style %}
 <style>
-    .project,.certi,.achieve{
-        color:white;
+    .project,
+    .certi,
+    .achieve {
+        color: white;
         margin: 30px;
     }
-    .project-item{
+
+    .project-item {
         padding: 10px;
         margin: 10px;
-        border:5px solid var(--gray);
+        border: 5px solid var(--gray);
         border-radius: 5px;
     }
-    .time,.skills{
+
+    .time,
+    .skills {
         float: right;
     }
-    .time{
+
+    .time {
         color: var(--comment);
     }
-    .skills{
+
+    .skills {
         width: 100%;
     }
-    .skills>span{
+
+    .skills>span {
         float: right;
         background-color: var(--blue);
         color: var(--black);
@@ -33,25 +41,29 @@
         font-weight: bold;
     }
 
-    a{
+    a {
         text-decoration: none;
     }
-    a:visited{
-        color:white;
+
+    a:visited {
+        color: white;
     }
-    .project-item>h2{
+
+    .project-item>a {
         color: var(--purple);
     }
-    .certi{
+
+    .certi {
         float: left;
         width: 95%;
     }
-    .certi-item>h2{
+
+    .certi-item>h2 {
         color: var(--pink);
     }
-    
-    .certi-item{
-        float:left;
+
+    .certi-item {
+        float: left;
         margin: 10px;
 
         border-radius: 10px;
@@ -63,91 +75,102 @@
 
         background-color: var(--gray);
     }
-    .certi-item>h2{
+
+    .certi-item>h2 {
         text-align: center;
     }
-    .certi-item>span{
+
+    .certi-item>span {
         color: var(--comment);
         font-weight: bold;
         float: right;
         font-size: medium;
     }
-    .certi-item>p,span{
+
+    .certi-item>p,
+    span {
         margin: 5px;
     }
 
 
-    img{
+    img {
         width: 100%;
     }
-    .achieve>span::before{
+
+    .achieve>span::before {
         content: "~$\00A0";
         color: var(--green);
     }
 
 
 
-    .employer{
+    .employer {
         color: var(--comment);
     }
+
+    .desc{
+        color: var(--white);
+    }
+
 </style>
 {% endblock %}
 
 {% block content %}
 
-    <div class="project">
-        <h1>Projects</h1>
-        {% for project in projects %}
-            <a target="_blank" href="{{project.link}}">
-            <div class="project-item">
-                
-                <p class="time">{{project.completed}}</p>
-                <h2 class="name">{{project.name}}</h2>
-                
-                <p class="employer">
-                    {% if project.on_job.employer == "myself" %}
-                    Freelance
-                    {% else %}
-                    for {{project.on_job.employer}}
-                    {% endif %}</p>
-                <br>
-                <p class="desc">{{project.desc}}</p>
-                <p class="skills">
-                    {% for skill in project.skills.all %}
-                    <span>{{skill}}</span>
-                    {% endfor %}
-                </p>
-                <br>
-                <br>
-
-            </div>
-            </a>
-        {% endfor %}
-    </div>
-
-    <div class="certi">
-        <h1>Certificates</h1>
-        {% for certificate in certificates %}
-            
-            <div class="certi-item">
-                <a target="_blank" href="{{certificate.link}}"><img src="/media/{{certificate.cover}}" alt=""></a>
-                
-                <h2 class="name">{{certificate.name}}</h2>
-                <span>by {{certificate.org}}</span>
-                
-                <p class="desc">{{certificate.desc}}</p>
-            </div>
-
+<div class="project">
+    <h1>Projects</h1>
+    {% for project in projects %}
     
-        {% endfor %}
+        <div class="project-item">
+
+            <p class="time">{{project.completed}}</p>
+            <a target="_blank" href="{{project.link}}">
+                <h2 class="name">{{project.name}}</h2>
+
+            <p class="employer">
+                {% if project.on_job.employer == "myself" %}
+                Freelance
+                {% else %}
+                for {{project.on_job.employer}}
+                {% endif %}</p>
+            <br>
+            <p class="desc">{{project.desc}}</p>
+            <p class="skills">
+                {% for skill in project.skills.all %}
+                <span>{{skill}}</span>
+                {% endfor %}
+            </p>
+            <br>
+            <br>
+
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<div class="certi">
+    <h1>Certificates</h1>
+    {% for certificate in certificates %}
+
+    <div class="certi-item">
+        <a target="_blank" href="{{certificate.link}}"><img src="/media/{{certificate.cover}}" alt=""></a>
+
+        <h2 class="name">{{certificate.name}}</h2>
+        <span>by {{certificate.org}}</span>
+
+        <p class="desc">{{certificate.desc}}</p>
     </div>
 
-    <div class="achieve">
-        <h1>Achievements</h1>
-        
-        {% for achievement in achievements %}
-            <span>{{achievement.data}}</span><br>
-        {% endfor %}    
-    </div>
+
+    {% endfor %}
+</div>
+
+<div class="achieve">
+    <h1>Achievements</h1>
+
+    {% for achievement in achievements %}
+    <span>{{achievement.data}}</span><br>
+    {% endfor %}
+</div>
 
 {% endblock %}
