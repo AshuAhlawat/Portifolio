@@ -24,5 +24,9 @@ class Certificate(models.Model):
     desc = models.TextField()
     link = models.URLField()
 
+    def __str__(self):
+        return f"{self.name} - {self.org}"
+
+        
 class Achievement(models.Model):
     data = models.TextField()

@@ -88,3 +88,13 @@ li a:hover:not(.active) {
 .content {
   font-family: 'Space Mono'
 }
+
+@media screen and (max-width: 650px){
+  .links {
+    float:left;
+    width: 100%;
+  }
+  .links li {
+    width: 2fr;
+  }
+}

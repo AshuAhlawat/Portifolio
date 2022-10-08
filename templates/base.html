@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,21 +8,28 @@
     <title>{% block title %} {% endblock %}</title>
 
     <link rel="stylesheet" href="/media/css/base.css">
-    
-</head> 
+    <!-- <link rel="stylesheet" href="/media/css/cssanimation.css"> -->
 
-{% block style %}{% endblock %}
+</head>
+
+{% block style %}
+{% endblock %}
 
 <body>
     <div class="navbar">
         <ul>
-          <li><a href="/intro">Intro</a></li>
-          <li><a href="/professional">Professional</a></li>
-          <li><a href="/projects">Projects</a></li>
-
-          <li style="float:right;"><a class="active" id="other" href="{{details.other}}" >  HR    </a></li>
-          <li style="float:right;"><a class="active" id="linkdin" href="{{details.linkdin}}" >LinkedIn</a></li>
-          <li style="float:right;"><a class="active" id="github" href="{{details.github}}"> Github </a></li>
+            <div class="simple">
+                <li><a href="/intro">Intro</a></li>
+                <li><a href="/professional">Professional</a></li>
+                <li><a href="/projects">Projects</a></li>
+            </div>
+            
+            <div class="links">
+                <li style="float:right;"><a class="active" id="other" href="{{details.other}}"> HR </a></li>
+                <li style="float:right;"><a class="active" id="linkdin" href="{{details.linkdin}}">LinkedIn</a></li>
+                <li style="float:right;"><a class="active" id="github" href="{{details.github}}"> Github </a></li>
+            </div>
+            
         </ul>
     </div>
 
@@ -32,4 +40,5 @@
     </div>
 
 </body>
+
 </html>

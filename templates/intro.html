@@ -8,16 +8,15 @@
             color: var(--green);
             font-size: x-large;
             font-weight: 500;
-
-            /* float: right; */
             margin-top: 30px;
             margin-right: 50px;
-
-            /* border: 2px solid black; */
+            width: 50%;
         }
-        .name > span{
+        .position{
             font-size:medium;
             color : #6272a4;
+            width: 30%;
+            
         }
         
         .left{
@@ -77,15 +76,25 @@
             color: var(--red);
         }
 
+        @media screen and (max-width: 650px) {
+            .left{
+                width: 90%;
+            }
+            .right{
+                width: 95%;
+            }
+        }
+
     </style>
 {% endblock %}
 
 {% block content %}
 <div class="left">
     <img src="/media/{{details.dp}}" alt="">
-    <div class="name">
-        {{details.name}} <br><span>{{details.position}}</span>
+    <div class="name cssanimation typing">
+        {{details.name}} <br>
     </div>
+    <div class="position cssanimation typing">{{details.position}}</div>
 
     <div class="contacts">
         <span>{{details.phone}}</span><br>

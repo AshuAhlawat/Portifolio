@@ -13,13 +13,15 @@
 
     .project-item {
         padding: 10px;
+        /* padding-bottom: 20px; */
         margin: 10px;
-        border: 5px solid var(--gray);
         border-radius: 5px;
+        border: 5px solid var(--gray);
+        display:flow-root;
+        /* display: flex; */
     }
 
-    .time,
-    .skills {
+    .time, .skills {
         float: right;
     }
 
@@ -67,8 +69,8 @@
         margin: 10px;
 
         border-radius: 10px;
-        width: 20%;
-        min-width: 300px;
+        width: 23%;
+        /* min-width: 285px; */
         height: 400px;
         overflow-y: scroll;
         transition: 400ms;
@@ -83,8 +85,9 @@
     .certi-item>span {
         color: var(--comment);
         font-weight: bold;
-        float: right;
         font-size: medium;
+        text-align: right;
+        width: 100%;
     }
 
     .certi-item>p,
@@ -95,6 +98,7 @@
 
     img {
         width: 100%;
+        height: 50%;
     }
 
     .achieve>span::before {
@@ -112,6 +116,31 @@
         color: var(--white);
     }
 
+    @media screen and (max-width:1000px) {
+        .certi-item{
+            width: 30%;
+        }
+    }
+
+    @media screen and (max-width:650px) {
+        .project,
+        .certi,
+        .achieve {
+            color: white;
+            margin: 10px;
+        }
+        .certi-item{
+            width: 45%;
+        }
+    }
+
+    @media screen and (max-width:450px) {
+        .certi-item{
+            width: 95%;
+        }
+    }
+
+
 </style>
 {% endblock %}
 
@@ -126,7 +155,8 @@
             <p class="time">{{project.completed}}</p>
             <a target="_blank" href="{{project.link}}">
                 <h2 class="name">{{project.name}}</h2>
-
+            </a>
+            
             <p class="employer">
                 {% if project.on_job.employer == "myself" %}
                 Freelance
@@ -134,17 +164,14 @@
                 for {{project.on_job.employer}}
                 {% endif %}</p>
             <br>
-            <p class="desc">{{project.desc}}</p>
+            <p class="desc">{{project.desc|linebreaks}}</p>
             <p class="skills">
                 {% for skill in project.skills.all %}
                 <span>{{skill}}</span>
                 {% endfor %}
             </p>
-            <br>
-            <br>
-
         </div>
-    </a>
+    
     {% endfor %}
 </div>
 
@@ -158,7 +185,7 @@
         <h2 class="name">{{certificate.name}}</h2>
         <span>by {{certificate.org}}</span>
 
-        <p class="desc">{{certificate.desc}}</p>
+        <p class="desc">{{certificate.desc|linebreaks}}</p>
     </div>
 
 
